@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        Scanner teclado = new Scanner(System.in);
+        int numeroAleatorio, intento, contador = 10;
+        numeroAleatorio = (int) (Math.random() * 100) + 1;
+
+        System.out.println("Introduce un Numero: ");
+        intento = teclado.nextInt();
+        if (intento == numeroAleatorio) {
+            System.out.println("Acertaste el Numero, Campeón!");
+        } else {
+            do {
+                System.out.println("Número contador: " + contador);
+                System.out.print("Introduce el número que creas posible: ");
+                intento = teclado.nextInt();
+                if (intento > numeroAleatorio) {
+                    System.out.println("El número que buscas es menor, te quedan "
+                            + (contador - 1) + " intentos: ");
+                } else if (intento < numeroAleatorio) {
+                    System.out.println("El número que buscas es mayor, te quedan "
+                            + (contador - 1) + " intentos: ");
+                } else {
+                    System.out.print("¡CORRECTO! " + numeroAleatorio + " era el número que estabas "
+                            + "buscando, has necesitado " + (10 - (contador - 1)) + " intentos.");
+                }
+                contador--;
+            } while (intento != numeroAleatorio && contador > 0);
+            if (contador == 0) {
+                System.out.println("Has perdido. El numero aleatorio era " + numeroAleatorio);
+            }
+        }
+    </pre>
+</body>
+</html>

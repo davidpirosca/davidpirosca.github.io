@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        String frase = "Me GUsta merenDAR gaLLEtas";
+        String resultado = "";
+        char puntero = 0;
+        boolean nuevapalabra = true; // Inicializar como true
+
+        for (int i = 0; i < frase.length(); i++) {
+            puntero = frase.charAt(i);
+
+            if (frase.charAt(i) == ' ') {
+                nuevapalabra = true;
+                continue;
+            }
+
+            if (nuevapalabra) {
+                nuevapalabra = false;
+                resultado = resultado + Character.toUpperCase(puntero);
+            } else {
+                resultado = resultado + Character.toLowerCase(puntero);
+            }
+        }
+        System.out.println("Tu frase seria: " + resultado);
+    </pre>
+</body>
+</html>

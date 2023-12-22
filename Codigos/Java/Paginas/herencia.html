@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        public class Persona {
+
+            String nombre;
+            int edad;
+            String oculto;
+        
+            public Persona(String nombre, int edad) {
+                this.nombre = nombre;
+                this.edad = edad;
+                this.oculto = "Pesona";
+            }
+        
+            @Override
+            public String toString() {
+                return "Persona{" + "nombre=" + nombre + ", edad=" + edad + '}';
+            }
+        
+            String quienSoy() {
+                return "SOY UNA PERSONA === " + toString();
+            }
+        }
+
+        public class Alumno extends Persona{
+            String curso;
+            String oculto;
+        
+            public Alumno(String curso, String nombre, int edad) {
+                super(nombre, edad);
+                this.curso = curso;
+                this.oculto = "ALUMNO";
+            }
+        
+            @Override
+            public String toString() {
+                return super.toString()+"Alumno{" + "curso=" + curso + ", oculto=" + oculto + '}';
+            }
+            
+            public String quienSoy(){
+                return "SOY UN ALUMNO ==="+super.quienSoy();
+            }
+            
+        }
+
+        public class Profesor extends Persona {
+
+            String asignatura;
+            String nombre;
+            String oculto;
+        
+            public Profesor(String asignatura, String nombre, int edad) {
+                super(nombre, edad);
+                this.asignatura = asignatura;
+                this.nombre = nombre;
+                this.oculto = oculto;
+            }
+        
+            @Override
+            public String toString() {
+                return super.toString() + "Profesor{" + "asignatura=" + asignatura + '}';
+            }
+        
+            public String quienSoy() {
+                return "SOY UN PROFESOR === " + super.toString();
+            }
+        }
+
+        public class EjemploHerencia {
+
+            public static void main(String[] args) {
+                ArrayList<Persona> personas = new ArrayList<>();
+                personas.add(new Persona("Pepe", 50));
+                personas.add(new Alumno("1ºDAM", "David", 27));
+                personas.add(new Profesor("Programacion", "Juan", 40));
+                personas.add(new Persona("Junjo", 30));
+                personas.add(new Profesor("Administracion", "Juan", 30));
+                personas.add(new Alumno("Matematicas", "Alberto", 26));
+        
+                for (Persona unaPersona : personas) {
+                    System.out.println("Oculto" + unaPersona.oculto);
+                    System.out.println("Salida de quien soy =>" + unaPersona.quienSoy());
+                }
+        //        personas.forEach(unaPersona)-> System.out.println(unaPersona);
+            }
+        }
+    </pre>
+</body>
+</html>

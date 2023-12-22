@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        private char calculaLetraDNI(int dni){
+            char salida = 0;
+            int resto;
+            resto = dni%23;
+           
+            switch (resto) {
+               case 0 -> salida = 'T';
+               case 1 -> salida = 'R';
+               case 2 -> salida = 'W';
+               case 3 -> salida = 'A';
+               case 4 -> salida = 'G';
+               case 5 -> salida = 'M';
+               case 6 -> salida = 'Y';
+               case 7 -> salida = 'F';
+               case 8 -> salida = 'P';
+               case 10 -> salida = 'X';
+               case 11 -> salida = 'B';
+               case 12 -> salida = 'N';
+               case 13 -> salida = 'J';
+               case 14 -> salida = 'Z';
+               case 15 -> salida = 'S';
+               case 16 -> salida = 'Q';
+               case 17 -> salida = 'V';
+               case 18 -> salida = 'H';
+               case 19 -> salida = 'L';
+               case 20 -> salida = 'C';
+               case 21 -> salida = 'K';
+               case 22 -> salida = 'E';
+               default -> salida = '#';
+            }
+               return salida;
+        }
+    </pre>
+</body>
+</html>

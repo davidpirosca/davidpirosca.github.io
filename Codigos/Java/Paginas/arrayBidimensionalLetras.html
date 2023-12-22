@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        Scanner sc = new Scanner(System.in);
+        sc.useLocale(US);
+        char salida;
+        String coordenadas = "";
+        String palabrafinal = "";
+
+        boolean entrada = true;
+
+        char[][] teclado = {
+            {'A', 'B', 'C', 'D', 'E'},
+            {'F', 'G', 'H', 'I', 'J'},
+            {'K', 'L', 'M', 'N', 'Ñ'},
+            {'O', 'P', 'Q', 'R', 'S'},
+            {'T', 'U', 'V', 'W', 'X'},
+            {'Y', 'Z', ' ', '<', '#'}};
+        System.out.println("Elige una casilla con el formato #,#, donde las representan las coordenadas de una letra.");
+        System.out.println("Un ejemplo seria 0,2 para seleccionar la letra C ");
+        System.out.println("¿Cuales son las coordenadas de la primera letra?: ");
+
+        for (int i = 0; i < teclado.length; i++) {
+            System.out.println("\n");
+            for (int j = 0; j < teclado[0].length; j++) {
+                salida = teclado[i][j];
+                System.out.print(salida + " ");
+            }
+        }
+        System.out.println("\n");
+
+        while (entrada) {
+
+            coordenadas = sc.next();
+            char x = coordenadas.charAt(0);
+            char y = coordenadas.charAt(2);
+            int primer = Character.getNumericValue(x);
+            int segundo = Character.getNumericValue(y);
+
+            if (primer < 0 || primer > 5 || segundo < 0 || segundo > 4) {
+                System.out.println("Las coordenadas se salen del rango de la tabla, seleccione de nuevo...");
+                continue;
+
+            } else if (primer == 5 && segundo == 4) {
+                entrada = false;
+                System.out.println(palabrafinal);
+            } else if (primer == 5 && segundo == 3) {
+                if (palabrafinal.length() == 0) {
+
+                } else {
+                    palabrafinal = palabrafinal.substring(0, palabrafinal.length() - 1);
+                }
+            } else {
+                palabrafinal += teclado[primer][segundo];
+            }
+            System.out.println("Tu palabra es: " + palabrafinal);
+        }
+        System.out.println("Programa Finalizado!!");
+    </pre>
+</body>
+</html>
