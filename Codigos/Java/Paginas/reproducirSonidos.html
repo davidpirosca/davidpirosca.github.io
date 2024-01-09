@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        Sonidos --https://github.com/davidpirosca/davidpirosca.github.io/tree/main/Codigos/Java/archivos/sonidos--
+
+
+        import java.io.File;
+        import javax.sound.sampled.AudioSystem;
+        import javax.sound.sampled.Clip;
+        
+        public class TocaSonidoWav {
+        
+            public void tocaSonidos(File archivoSonido) {
+                try {
+                    // Se obtiene un Clip de sonido
+                    Clip sonido = AudioSystem.getClip();
+        
+                    // Se carga con un fichero wav
+                    sonido.open(AudioSystem.getAudioInputStream(archivoSonido));
+        
+                    // Comienza la reproducción
+                    sonido.start();
+                    Thread.sleep(1);
+        
+                    // Espera mientras se esté reproduciendo.
+                    while (sonido.isRunning()) {
+                        Thread.sleep(1);
+                    }
+                    // Se cierra el clip.
+                    sonido.close();
+                } catch (Exception e) {
+                    System.out.println("" + e);
+                }
+            }
+        }
+
+        import java.io.File;
+        import java.util.ArrayList;
+        import javax.sound.sampled.AudioFileFormat;
+        import javax.sound.sampled.AudioSystem;
+        import javax.sound.sampled.Clip;
+        
+        public class PrincipalSonido {
+            final static String RUTA = "sonidos/"; //ruta relativa de sonidos dentro de carpeta de proyecto
+        
+            public static void main(String arg[]) {
+                String cadenasSonidos[] = {"TROMPETA.wav", "ORGANO.wav", "BATERIA.wav"};
+                ArrayList<File> ficherosSonidos;
+                TocaSonidoWav tocaSonido = new TocaSonidoWav();
+                ficherosSonidos = cargaArchivosSonido(cadenasSonidos);
+                for (File archivoSonido : ficherosSonidos) {
+                    tocaSonido.tocaSonidos(archivoSonido);
+                }
+            }
+        
+            private static ArrayList<File> cargaArchivosSonido(String cadenaSonidos[]) {
+                ArrayList<File> ficherosSonidos = new ArrayList<>();
+                for (String nombre : cadenaSonidos) {
+                    ficherosSonidos.add(new File(RUTA + nombre));
+                }
+                return ficherosSonidos;
+            }
+        }
+    </pre>
+</body>
+</html>

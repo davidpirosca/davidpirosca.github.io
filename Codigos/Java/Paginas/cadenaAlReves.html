@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        Scanner sc= new Scanner(System.in);
+        sc.useDelimiter("\n");
+        String cadena = sc.next();
+        // Esta será la cadena invertida, primero está vacía
+        String invertida = "";
+        // Recorremos la original del final al inicio
+        for (int i = cadena.length() - 1; i >= 0; i--) {
+            // Y vamos concatenando cada carácter a la nueva cadena
+            invertida += cadena.charAt(i);
+        }
+        System.out.println("Cadena original: " + cadena);
+        System.out.println("Cadena invertida: " + invertida);
+    </pre>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        //     int numeros[] = new int [5];
+        int numerosaMostrar = -1;
+        int numeros[] = {1, 10, 5, 6, 4, 3, 2, 7, 8, 9};
+        ArrayList<Integer> numeros2 = new ArrayList();
+        numeros2.add(1);
+        numeros2.add(5);
+        numeros2.add(2);
+        numeros2.add(4);
+        numeros2.add(3);
+        ArrayList<Integer> numeros3 = new ArrayList();
+        numeros3 = numeros2;
+        ArrayList<Integer> numeros4 = new ArrayList();
+        int contador = 0;
+
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i]);
+        }
+        System.out.println("\n");
+        System.out.println("Numero mayor es: ");
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] > numerosaMostrar) {
+                numerosaMostrar = numeros[i];
+            }
+        }
+        System.out.println(numerosaMostrar);
+
+        numerosaMostrar = 0;
+        System.out.println("\nNumeros son los siguientes: ");
+        for (int i = 0; i < numeros2.size(); i++) {
+            System.out.print(numeros2.get(i) + " ");
+        }
+
+        System.out.println("\nNumeros de mayor a menor: ");
+
+        boolean condicion = true;
+        while (condicion) {
+
+            if (numeros3.isEmpty()) {
+                condicion = false;
+            } else {
+                for (int j = 0; j < numeros3.size(); j++) {
+                    if (numeros3.get(j) > numerosaMostrar) {
+                        numerosaMostrar = numeros2.get(j);
+                        contador = j;
+                    }
+                }
+
+                numeros4.add(numerosaMostrar);
+                numeros3.remove(contador);
+                numerosaMostrar = -1;
+            }
+        }
+
+        for (int i = 0; i < numeros4.size(); i++) {
+            System.out.print(numeros4.get(i) + " ");
+        }
+        System.out.println("\n");
+    </pre>
+</body>
+</html>

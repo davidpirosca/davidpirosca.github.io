@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        Scanner sc= new Scanner(System.in);
+        String mail="mail@mail.com";
+        boolean punto=false;
+        int arroba=0;
+            for (int i = 0; i < mail.length(); i++) {
+                if (mail.charAt(i)=='@') {
+                    arroba++;
+                }
+                if (mail.charAt(i)=='.') {
+                    punto=true;
+                }
+            }
+            if(arroba==1 && punto==true){
+                System.out.println("correcto");
+            }else{
+                System.out.println("incorrecto");
+            }
+    </pre>
+</body>
+</html>

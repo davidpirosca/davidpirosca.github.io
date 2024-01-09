@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../Estilo/estiloCodigo.css">
+</head>
+<body>
+    <pre>
+        public class Lista {
+
+            ArrayList<Integer> arrayList;
+        
+            public Lista() {
+                arrayList = new ArrayList<>();
+            }
+        
+            static Lista concatena(Lista lista1, Lista lista2) {
+                Lista resultado = new Lista();
+                resultado.arrayList.addAll(lista1.arrayList);
+                resultado.arrayList.addAll(lista2.arrayList);
+                return resultado;
+            }
+        
+            void insertarPrincipio(Integer nuevo) {
+                arrayList.add(nuevo);
+            }
+        
+            void insertarFinal(Integer nuevo) {
+                arrayList.add(arrayList.size(), nuevo);
+            }
+        
+            void insertarFinal(Lista otraLista) {
+                for (Integer dato : otraLista.arrayList) {
+                    insertarFinal(dato);
+                }
+            }
+        
+            void insertar(int posicion, Integer nuevo) {
+                arrayList.add(posicion, nuevo);
+            }
+        
+            Integer eliminar(int indice) {
+                return arrayList.remove(indice);
+            }
+        
+            Integer get(int indice) {
+                return arrayList.get(indice);
+            }
+        
+            int buscar(Integer claveBusqueda) {
+                return arrayList.indexOf(claveBusqueda);
+            }
+        
+            public void mostrar() {
+                System.out.println("Lista: " + arrayList.toString());
+            }
+        }
+
+        public class Main {
+            public static void main(String[] args) {
+                Lista lista1 = new Lista();
+                Lista lista2 = new Lista();
+        
+                lista1.insertarFinal(1);
+                lista1.insertarFinal(1);
+                lista1.insertarFinal(2);
+                lista1.insertarFinal(3);
+                System.out.println("lista1: ");
+                lista1.mostrar();
+                lista2.insertarFinal(10);
+                lista2.insertarFinal(20);
+                lista2.insertarFinal(30);
+                System.out.println("lista2: ");
+                lista2.mostrar();
+                Lista listaConcatenada = Lista.concatena(lista1, lista2);
+                System.out.println("listaConcatenada: ");
+                listaConcatenada.mostrar();
+            }
+        }
+    </pre>
+</body>
+</html>
