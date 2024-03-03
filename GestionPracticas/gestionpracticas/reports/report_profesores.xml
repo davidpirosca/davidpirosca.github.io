@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Profesores -->
+        <record id="report_gestionpracticas_profesores" model="ir.actions.report">
+            <field name="name">Informe de Profesores</field>
+            <field name="model">gestionpracticas.profesor</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.profesores_report</field>
+            <field name="report_file">gestionpracticas.profesores_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_profesor"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Profesores -->
+        <template id="gestionpracticas.profesores_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Profesores</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px; text-align: center;">Foto</th>
+                                <th style="padding: 10px; text-align: center;">DNI</th>
+                                <th style="padding: 10px; text-align: center;">Nombre</th>
+                                <th style="padding: 10px; text-align: center;">Fecha de Nacimiento</th>
+                                <th style="padding: 10px; text-align: center;">Dirección</th>
+                                <th style="padding: 10px; text-align: center;">Teléfono</th>
+                                <th style="padding: 10px; text-align: center;">Email</th>
+                                <th style="padding: 10px; text-align: center;">Ciclo Formativo</th>
+                                <th style="padding: 10px; text-align: center;">Total de Alumnos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="profesor">
+                                <tr>
+                                    <td style="padding: 10px; text-align: center;"><img t-att-src="'data:image/png;base64,' + profesor.foto.decode('utf-8')" style="max-height: 50px; max-width: 50px; border-radius: 50%;"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.dni"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.fecha_nacimiento"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.direccion"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.telefono"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.email"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.id_ciclo_formativo.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="profesor.total_alumnos"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Alumnos -->
+        <record id="report_gestionpracticas_alumnos" model="ir.actions.report">
+            <field name="name">Informe de Alumnos</field>
+            <field name="model">gestionpracticas.alumno</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.alumnos_report</field>
+            <field name="report_file">gestionpracticas.alumnos_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_alumno"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Alumnos -->
+        <template id="gestionpracticas.alumnos_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Alumnos</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px;">Foto</th>
+                                <th style="padding: 10px;">DNI</th>
+                                <th style="padding: 10px;">Nombre</th>
+                                <th style="padding: 10px;">Fecha de Nacimiento</th>
+                                <th style="padding: 10px;">Dirección</th>
+                                <th style="padding: 10px;">Teléfono</th>
+                                <th style="padding: 10px;">Correo Electrónico</th>
+                                <th style="padding: 10px;">Ciclo Formativo</th>
+                                <th style="padding: 10px;">Profesor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="alumno">
+                                <tr>
+                                    <td style="padding: 10px;"><img t-att-src="'data:image/png;base64,' + alumno.foto.decode('utf-8')" style="max-height: 50px; max-width: 50px; border-radius: 50%;"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.dni"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.name"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.fecha_nacimiento"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.direccion"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.telefono"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.email"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.id_ciclo_formativo.name"/></td>
+                                    <td style="padding: 10px;"><span t-field="alumno.profesor.name"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Ciclos Formativos -->
+        <record id="ciclo_formativo_1" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Administración y Finanzas</field>
+        </record>
+
+        <record id="ciclo_formativo_2" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Asistencia a la Dirección</field>
+        </record>
+
+        <record id="ciclo_formativo_3" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Desarrollo de Aplicaciones Web</field>
+        </record>
+
+        <record id="ciclo_formativo_4" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Desarrollo de Aplicaciones Multiplataforma</field>
+        </record>
+
+        <record id="ciclo_formativo_5" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Administración de Sistemas Informáticos en Red</field>
+        </record>
+
+        <record id="ciclo_formativo_6" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Gestión Administrativa</field>
+        </record>
+
+        <record id="ciclo_formativo_7" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Sistemas Microinformáticos y Redes</field>
+        </record>
+
+        <!-- Profesores -->
+        <record id="profesor1" model="gestionpracticas.profesor">
+            <field name="dni">65432187X</field>
+            <field name="name">José López García</field>
+            <field name="fecha_nacimiento">1980-05-15</field>
+            <field name="direccion">Calle Maestra, 123</field>
+            <field name="telefono">675849213</field>
+            <field name="email">jose.lopez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor1.jpg"/>
+        </record>
+
+        <record id="profesor2" model="gestionpracticas.profesor">
+            <field name="dni">78912345Y</field>
+            <field name="name">María Sánchez Ruiz</field>
+            <field name="fecha_nacimiento">1982-08-20</field>
+            <field name="direccion">Av. del Profesorado, 45</field>
+            <field name="telefono">612345678</field>
+            <field name="email">maria.sanchez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor2.jpg"/>
+        </record>
+
+        <record id="profesor3" model="gestionpracticas.profesor">
+            <field name="dni">23567890Z</field>
+            <field name="name">Antonio Martínez López</field>
+            <field name="fecha_nacimiento">1975-09-10</field>
+            <field name="direccion">Plaza de la Educación, 78</field>
+            <field name="telefono">745983210</field>
+            <field name="email">antonio.martinez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor3.jpg"/>
+        </record>
+
+        <record id="profesor4" model="gestionpracticas.profesor">
+            <field name="dni">89023456A</field>
+            <field name="name">Laura González Rodríguez</field>
+            <field name="fecha_nacimiento">1978-03-25</field>
+            <field name="direccion">Calle del Saber, 56</field>
+            <field name="telefono">563214789</field>
+            <field name="email">laura.gonzalez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor4.jpg"/>
+        </record>
+
+        <record id="profesor5" model="gestionpracticas.profesor">
+            <field name="dni">01234678B</field>
+            <field name="name">Carlos Fernández Gómez</field>
+            <field name="fecha_nacimiento">1985-11-12</field>
+            <field name="direccion">Av. de la Pedagogía, 34</field>
+            <field name="telefono">489321576</field>
+            <field name="email">carlos.fernandez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor5.jpg"/>
+        </record>
+        
+        <!-- Alumnos -->
+        <record id="alumno1" model="gestionpracticas.alumno">
+            <field name="dni">12346789A</field>
+            <field name="name">Laura Pérez García</field>
+            <field name="fecha_nacimiento">1996-07-22</field>
+            <field name="direccion">Calle Mayor, 456</field>
+            <field name="telefono">678543210</field>
+            <field name="email">laura.perez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor1"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno1.jpg"/>
+        </record>
+        
+        <record id="alumno2" model="gestionpracticas.alumno">
+            <field name="dni">23456890B</field>
+            <field name="name">Daniel Rodríguez Fernández</field>
+            <field name="fecha_nacimiento">1997-04-14</field>
+            <field name="direccion">Av. de la Tecnología, 78</field>
+            <field name="telefono">765432109</field>
+            <field name="email">daniel.rodriguez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor2"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno2.jpg"/>
+        </record>
+        
+        <record id="alumno3" model="gestionpracticas.alumno">
+            <field name="dni">34568901C</field>
+            <field name="name">Elena Gómez Martínez</field>
+            <field name="fecha_nacimiento">1995-11-30</field>
+            <field name="direccion">Plaza de la Informática, 23</field>
+            <field name="telefono">654321098</field>
+            <field name="email">elena.gomez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor3"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno3.jpg"/>
+        </record>
+        
+        <record id="alumno4" model="gestionpracticas.alumno">
+            <field name="dni">45679012D</field>
+            <field name="name">Javier Sánchez López</field>
+            <field name="fecha_nacimiento">1996-02-18</field>
+            <field name="direccion">Calle del Desarrollo, 67</field>
+            <field name="telefono">876543210</field>
+            <field name="email">javier.sanchez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno4.jpg"/>
+        </record>
+        
+        <record id="alumno5" model="gestionpracticas.alumno">
+            <field name="dni">56789123E</field>
+            <field name="name">Ana Martínez García</field>
+            <field name="fecha_nacimiento">1997-09-05</field>
+            <field name="direccion">Av. de la Programación, 12</field>
+            <field name="telefono">987654321</field>
+            <field name="email">ana.martinez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor5"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno5.jpg"/>
+        </record>
+        
+        <record id="alumno6" model="gestionpracticas.alumno">
+            <field name="dni">67891234F</field>
+            <field name="name">David López Sánchez</field>
+            <field name="fecha_nacimiento">1995-12-10</field>
+            <field name="direccion">Calle de la Innovación, 45</field>
+            <field name="telefono">765432109</field>
+            <field name="email">david.lopez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor1"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno6.jpg"/>
+        </record>
+        
+        <record id="alumno7" model="gestionpracticas.alumno">
+            <field name="dni">78912345G</field>
+            <field name="name">Sara Fernández Martínez</field>
+            <field name="fecha_nacimiento">1997-05-28</field>
+            <field name="direccion">Plaza del Desarrollo, 34</field>
+            <field name="telefono">654321098</field>
+            <field name="email">sara.fernandez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor2"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno7.jpg"/>
+        </record>
+        
+        <record id="alumno8" model="gestionpracticas.alumno">
+            <field name="dni">89023456H</field>
+            <field name="name">Carlos Rodríguez Gómez</field>
+            <field name="fecha_nacimiento">1996-08-15</field>
+            <field name="direccion">Av. de la Tecnología, 56</field>
+            <field name="telefono">876543210</field>
+            <field name="email">carlos.rodriguez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor3"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno8.jpg"/>
+        </record>
+        
+        <record id="alumno9" model="gestionpracticas.alumno">
+            <field name="dni">90124567I</field>
+            <field name="name">Lucía Gómez Rodríguez</field>
+            <field name="fecha_nacimiento">1997-03-20</field>
+            <field name="direccion">Calle de la Programación, 23</field>
+            <field name="telefono">987654321</field>
+            <field name="email">lucia.gomez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor4"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno9.jpg"/>
+        </record>
+        
+        <record id="alumno10" model="gestionpracticas.alumno">
+            <field name="dni">01245678J</field>
+            <field name="name">Manuel Sánchez Gómez</field>
+            <field name="fecha_nacimiento">1996-01-08</field>
+            <field name="direccion">Av. de la Innovación, 78</field>
+            <field name="telefono">765432109</field>
+            <field name="email">manuel.sanchez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="profesor" ref="profesor5"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/alumno10.jpg"/>
+        </record>
+
+                <!-- Empresas -->
+        <record id="empresa1" model="gestionpracticas.empresa">
+            <field name="name">Empresa A</field>
+            <field name="direccion">Calle Principal, 123</field>
+            <field name="email">empresaA@example.com</field>
+            <field name="telefono">123456789</field>
+            <field name="responsable">Juan Pérez</field>
+        </record>
+
+        <record id="empresa2" model="gestionpracticas.empresa">
+            <field name="name">Empresa B</field>
+            <field name="direccion">Avenida Central, 456</field>
+            <field name="email">empresaB@example.com</field>
+            <field name="telefono">987654321</field>
+            <field name="responsable">Ana Gómez</field>
+        </record>
+
+        <record id="empresa3" model="gestionpracticas.empresa">
+            <field name="name">Empresa C</field>
+            <field name="direccion">Plaza Empresarial, 789</field>
+            <field name="email">empresaC@example.com</field>
+            <field name="telefono">456789012</field>
+            <field name="responsable">Pedro Rodríguez</field>
+        </record>
+
+        <record id="empresa4" model="gestionpracticas.empresa">
+            <field name="name">Empresa D</field>
+            <field name="direccion">Calle Comercial, 567</field>
+            <field name="email">empresaD@example.com</field>
+            <field name="telefono">345678901</field>
+            <field name="responsable">María López</field>
+        </record>
+
+        <record id="empresa5" model="gestionpracticas.empresa">
+            <field name="name">Empresa E</field>
+            <field name="direccion">Avenida Industrial, 890</field>
+            <field name="email">empresaE@example.com</field>
+            <field name="telefono">678901234</field>
+            <field name="responsable">Carlos Fernández</field>
+        </record>
+
+        <!-- Prácticas -->
+        <record id="practica1" model="gestionpracticas.practica">
+            <field name="name" ref="alumno1"/>
+            <field name="id_profesor" ref="profesor1"/>
+            <field name="id_ciclo" ref="ciclo_formativo_4"/>
+            <field name="id_empresa" ref="empresa1"/>
+            <field name="fecha_inicio">2024-04-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <record id="practica2" model="gestionpracticas.practica">
+            <field name="name" ref="alumno2"/>
+            <field name="id_profesor" ref="profesor2"/>
+            <field name="id_ciclo" ref="ciclo_formativo_4"/>
+            <field name="id_empresa" ref="empresa2"/>
+            <field name="fecha_inicio">2024-04-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <record id="practica3" model="gestionpracticas.practica">
+            <field name="name" ref="alumno3"/>
+            <field name="id_profesor" ref="profesor3"/>
+            <field name="id_ciclo" ref="ciclo_formativo_4"/>
+            <field name="id_empresa" ref="empresa3"/>
+            <field name="fecha_inicio">2024-04-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <record id="practica4" model="gestionpracticas.practica">
+            <field name="name" ref="alumno4"/>
+            <field name="id_profesor" ref="profesor4"/>
+            <field name="id_ciclo" ref="ciclo_formativo_4"/>
+            <field name="id_empresa" ref="empresa4"/>
+            <field name="fecha_inicio">2024-04-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <record id="practica5" model="gestionpracticas.practica">
+            <field name="name" ref="alumno5"/>
+            <field name="id_profesor" ref="profesor5"/>
+            <field name="id_ciclo" ref="ciclo_formativo_4"/>
+            <field name="id_empresa" ref="empresa5"/>
+            <field name="fecha_inicio">2024-04-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <!-- Enlazando Datos -->
+        <record id="ciclo_formativo_4" model="gestionpracticas.ciclos_formativos">
+            <field name="name">Desarrollo de Aplicaciones Multiplataforma</field>
+            <field name="profesores" eval="[(6, 0, [ref('profesor1'), ref('profesor2'), ref('profesor3'), ref('profesor4'), ref('profesor5')])]"/>
+            <field name="coordinador" ref="profesor1"/>
+        </record>
+
+        <record id="profesor1" model="gestionpracticas.profesor">
+            <field name="dni">65432187X</field>
+            <field name="name">José López García</field>
+            <field name="fecha_nacimiento">1980-05-15</field>
+            <field name="direccion">Calle Maestra, 123</field>
+            <field name="telefono">675849213</field>
+            <field name="email">jose.lopez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="id_alumnos" eval="[(4, ref('alumno1')), (4, ref('alumno2')), (4, ref('alumno3')), (4, ref('alumno4')), (4, ref('alumno5')), (4, ref('alumno6')), (4, ref('alumno7')), (4, ref('alumno8')), (4, ref('alumno9')), (4, ref('alumno10'))]"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor1.jpg"/>
+        </record>
+
+        <record id="profesor2" model="gestionpracticas.profesor">
+            <field name="dni">78912345Y</field>
+            <field name="name">María Sánchez Ruiz</field>
+            <field name="fecha_nacimiento">1982-08-20</field>
+            <field name="direccion">Av. del Profesorado, 45</field>
+            <field name="telefono">612345678</field>
+            <field name="email">maria.sanchez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="id_alumnos" eval="[(4, ref('alumno1')), (4, ref('alumno2')), (4, ref('alumno3'))]"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor2.jpg"/>
+        </record>
+
+        <record id="profesor3" model="gestionpracticas.profesor">
+            <field name="dni">23567890Z</field>
+            <field name="name">Antonio Martínez López</field>
+            <field name="fecha_nacimiento">1975-09-10</field>
+            <field name="direccion">Plaza de la Educación, 78</field>
+            <field name="telefono">745983210</field>
+            <field name="email">antonio.martinez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="id_alumnos" eval="[(4, ref('alumno1')), (4, ref('alumno2')), (4, ref('alumno3')), (4, ref('alumno4')), (4, ref('alumno5')), (4, ref('alumno6')), (4, ref('alumno7')), (4, ref('alumno8')), (4, ref('alumno9')), (4, ref('alumno10'))]"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor3.jpg"/>
+        </record>
+
+        <record id="profesor4" model="gestionpracticas.profesor">
+            <field name="dni">89023456A</field>
+            <field name="name">Laura González Rodríguez</field>
+            <field name="fecha_nacimiento">1978-03-25</field>
+            <field name="direccion">Calle del Saber, 56</field>
+            <field name="telefono">563214789</field>
+            <field name="email">laura.gonzalez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="id_alumnos" eval="[(4, ref('alumno1')), (4, ref('alumno2')), (4, ref('alumno3')), (4, ref('alumno4')), (4, ref('alumno5')), (4, ref('alumno6')), (4, ref('alumno7'))]"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor4.jpg"/>
+        </record>
+
+        <record id="profesor5" model="gestionpracticas.profesor">
+            <field name="dni">01234678B</field>
+            <field name="name">Carlos Fernández Gómez</field>
+            <field name="fecha_nacimiento">1985-11-12</field>
+            <field name="direccion">Av. de la Pedagogía, 34</field>
+            <field name="telefono">489321576</field>
+            <field name="email">carlos.fernandez@example.com</field>
+            <field name="id_ciclo_formativo" ref="ciclo_formativo_4"/>
+            <field name="id_alumnos" eval="[(4, ref('alumno1')), (4, ref('alumno2')), (4, ref('alumno3'))]"/>
+            <field name="foto" type="base64" file="gestionpracticas/static/img/profesor5.jpg"/>
+        </record>
+    </data>
+</odoo>

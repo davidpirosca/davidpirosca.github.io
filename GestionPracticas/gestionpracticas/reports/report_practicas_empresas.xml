@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Prácticas Estudiantiles -->
+        <record id="report_gestionpracticas_practicas" model="ir.actions.report">
+            <field name="name">Informe de Prácticas Estudiantiles</field>
+            <field name="model">gestionpracticas.practica</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.practicas_report</field>
+            <field name="report_file">gestionpracticas.practicas_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_practica"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Prácticas Estudiantiles -->
+        <template id="gestionpracticas.practicas_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Prácticas Estudiantiles</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px; text-align: center;">Alumno</th>
+                                <th style="padding: 10px; text-align: center;">Profesor</th>
+                                <th style="padding: 10px; text-align: center;">Ciclo Formativo</th>
+                                <th style="padding: 10px; text-align: center;">Empresa</th>
+                                <th style="padding: 10px; text-align: center;">Fecha de Inicio</th>
+                                <th style="padding: 10px; text-align: center;">Fecha de Fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="practica">
+                                <tr>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.name.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.id_profesor.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.id_ciclo.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.id_empresa.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.fecha_inicio"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="practica.fecha_fin"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

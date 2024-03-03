@@ -1,0 +1,336 @@
+<odoo>
+    <data>
+
+        <!-- ************************************************************************ -->
+        <!-- Practicas -->
+        <!-- ************************************************************************ -->
+
+        <!-- Vista de árbol para Practicas -->
+        <record id="view_practicas_tree" model="ir.ui.view">
+            <field name="name">Gestión de Prácticas Estudiantiles - Árbol</field>
+            <field name="model">gestionpracticas.practica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="id_profesor"/>
+                    <field name="id_ciclo"/>
+                    <field name="id_empresa"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Formulario para Practicas -->
+        <record id="view_practicas_form" model="ir.ui.view">
+            <field name="name">Gestión de Prácticas Estudiantiles - Formulario</field>
+            <field name="model">gestionpracticas.practica</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="id_profesor"/>
+                        <field name="id_ciclo" readonly="1"/>
+                        <field name="id_empresa"/>
+                        <field name="fecha_inicio" widget="daterange" options="{'related_end_date': 'fecha_fin'}"/>
+                        <field name="fecha_fin" widget="daterange" options="{'related_start_date': 'fecha_inicio'}"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Calendario para Practicas -->
+        <record id="view_gestionpracticas_practica_calendar" model="ir.ui.view">
+            <field name="name">Gestión de Prácticas Estudiantiles - Calendario</field>
+            <field name="model">gestionpracticas.practica</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario de Prácticas" date_start="fecha_inicio" date_stop="fecha_fin">
+                    <field name="name"/>
+                    <field name="id_profesor"/>
+                    <field name="id_ciclo"/>
+                    <field name="id_empresa"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de árbol de Prácticas -->
+        <record id="gestionpracticas_practica_action_window" model="ir.actions.act_window">
+            <field name="name">Prácticas Estudiantiles</field>
+            <field name="res_model">gestionpracticas.practica</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+
+        <!-- ************************************************************************ -->
+        <!-- Final Practicas -->
+        <!-- ************************************************************************ -->
+
+        <!-- ************************************************************************ -->
+        <!-- Empresas -->
+        <!-- ************************************************************************ -->
+
+        <!-- Vista de formulario para Empresas -->
+        <record id="view_gestionpracticas_empresa_form" model="ir.ui.view">
+            <field name="name">gestionpracticas.empresa.form</field>
+            <field name="model">gestionpracticas.empresa</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="direccion"/>
+                        <field name="telefono"/>
+                        <field name="email"/>
+                        <field name="responsable"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para Empresas -->
+        <record id="view_gestionpracticas_empresa_tree" model="ir.ui.view">
+            <field name="name">gestionpracticas.empresa.tree</field>
+            <field name="model">gestionpracticas.empresa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="direccion"/>
+                    <field name="email" widget="email"/>
+                    <field name="responsable"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de árbol de Empresas -->
+        <record id="gestionpracticas_empresa_action_window" model="ir.actions.act_window">
+            <field name="name">Empresas</field>
+            <field name="res_model">gestionpracticas.empresa</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ************************************************************************ -->
+        <!-- Final Empresas -->
+        <!-- ************************************************************************ -->
+
+        <!-- ************************************************************************ -->
+        <!-- Alumnos -->
+        <!-- ************************************************************************ -->
+
+        <!-- Vista de formulario para Alumnos -->
+        <record id="view_gestionpracticas_alumno_form" model="ir.ui.view">
+            <field name="name">gestionpracticas.alumno.form</field>
+            <field name="model">gestionpracticas.alumno</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="foto" widget="image" class="oe_avatar"></field>
+                            <field name="dni"/>
+                            <field name="name"/>
+                            <field name="fecha_nacimiento" widget="date"/>
+                            <field name="direccion"/>
+                            <field name="telefono" widget="phone" options="{'enable_sms': false}"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                        <group>
+                            <field name="id_ciclo_formativo"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Kanban para Alumnos -->
+        <record id="view_gestionpracticas_alumno_kanban" model="ir.ui.view">
+            <field name="name">gestionpracticas.alumno.kanban</field>
+            <field name="model">gestionpracticas.alumno</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_image">
+                                    <field name="foto" widget="image" class="oe_avatar"></field>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div><field name="dni"/></div>
+                                    <div><field name="telefono"/></div>
+                                    <div><field name="email"/></div>
+                                </div>
+                                <div class="oe_kanban_right">
+                                    <div><field name="id_ciclo_formativo"/></div>
+                                    <div><field name="profesor"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para Alumnos -->
+        <record id="view_gestionpracticas_alumno_tree" model="ir.ui.view">
+            <field name="name">gestionpracticas.alumno.tree</field>
+            <field name="model">gestionpracticas.alumno</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="dni"/>
+                    <field name="name"/>
+                    <field name="id_ciclo_formativo"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de Alumnos -->
+        <record id="gestionpracticas_alumno_action_window" model="ir.actions.act_window">
+            <field name="name">Alumnos</field>
+            <field name="res_model">gestionpracticas.alumno</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <!-- ************************************************************************ -->
+        <!-- Final Alumnos -->
+        <!-- ************************************************************************ -->
+
+        <!-- ************************************************************************ -->
+        <!-- Profesores -->
+        <!-- ************************************************************************ -->
+
+        <!-- Vista de formulario para Profesores -->
+        <record id="view_gestionpracticas_profesor_form" model="ir.ui.view">
+            <field name="name">gestionpracticas.profesor.form</field>
+            <field name="model">gestionpracticas.profesor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Enviar Correo" type="object" name="send_welcome_email"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="foto" widget="image" class="oe_avatar"></field>
+                            <field name="dni"/>
+                            <field name="name"/>
+                            <field name="fecha_nacimiento" widget="date"/>
+                            <field name="direccion"/>
+                            <field name="telefono" widget="phone" options="{'enable_sms': false}"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                        <group>
+                            <field name="id_ciclo_formativo"/>
+                            <field name="id_alumnos" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para Profesores -->
+        <record id="view_gestionpracticas_profesor_tree" model="ir.ui.view">
+            <field name="name">gestionpracticas.profesor.tree</field>
+            <field name="model">gestionpracticas.profesor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="dni"/>
+                    <field name="name"/>
+                    <field name="id_ciclo_formativo"/>
+                </tree>
+            </field>
+        </record>
+
+         <!-- Vista Kanban para Profesores -->
+         <record id="view_gestionpracticas_profesor_kanban" model="ir.ui.view">
+            <field name="name">gestionpracticas.profesor.kanban</field>
+            <field name="model">gestionpracticas.profesor</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_image">
+                                    <field name="foto" widget="image" class="oe_avatar"></field>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div><field name="dni"/></div>
+                                    <div><field name="telefono"/></div>
+                                    <div><field name="email"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de árbol de Profesores -->
+        <record id="gestionpracticas_profesor_action_window" model="ir.actions.act_window">
+            <field name="name">Profesores</field>
+            <field name="res_model">gestionpracticas.profesor</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <!-- ************************************************************************ -->
+        <!-- Final Profesores -->
+        <!-- ************************************************************************ -->
+
+        <!-- ************************************************************************ -->
+        <!-- Ciclo Formativo -->
+        <!-- ************************************************************************ -->
+
+        <!-- Vista de formulario para Ciclos Formativos -->
+        <record id="view_gestionpracticas_ciclos_formativos_form" model="ir.ui.view">
+            <field name="name">gestionpracticas.ciclos_formativos.form</field>
+            <field name="model">gestionpracticas.ciclos_formativos</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="coordinador"/>
+                            <field name="profesores" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para Ciclos Formativos -->
+        <record id="view_gestionpracticas_ciclos_formativos_tree" model="ir.ui.view">
+            <field name="name">gestionpracticas.ciclos_formativos.tree</field>
+            <field name="model">gestionpracticas.ciclos_formativos</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="coordinador"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de árbol de Ciclos Formativos -->
+        <record id="gestionpracticas_ciclos_formativos_action_window" model="ir.actions.act_window">
+            <field name="name">Ciclos Formativos</field>
+            <field name="res_model">gestionpracticas.ciclos_formativos</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ************************************************************************ -->
+        <!-- Final Ciclo Formativo -->
+        <!-- ************************************************************************ -->
+
+        <!-- Menú principal de GestionPracticas -->
+        <menuitem id="gestionpracticas_menu_root" name="Gestion de Practicas" web_icon="gestionpracticas.static/description/icon.png" />
+        <menuitem id="gestionpracticas_menu_root" name="Gestion de Practicas" />
+        <menuitem id="gestionpracticas_menu_root" name="Gestion de Practicas" groups="groupo_administrador,groupo_usuarios"/>
+        <!-- Menú de Prácticas -->
+        <menuitem id="gestionpracticas_practicas_menu" name="Practicas" parent="gestionpracticas_menu_root" sequence="10" action="gestionpracticas_practica_action_window"/>
+        <!-- Menú de Empresas -->
+        <menuitem id="gestionpracticas_empresas_menu" name="Empresas" parent="gestionpracticas_menu_root" sequence="20" action="gestionpracticas_empresa_action_window"/>
+        <!-- Menú de Alumnos -->
+        <menuitem id="gestionpracticas_alumnos_menu" name="Alumnos" parent="gestionpracticas_menu_root" sequence="30" action="gestionpracticas_alumno_action_window"/>
+        <!-- Menú de Profesores -->
+        <menuitem id="gestionpracticas_profesores_menu" name="Profesores" parent="gestionpracticas_menu_root" sequence="40" action="gestionpracticas_profesor_action_window"/>
+        <!-- Menú de Ciclos Formativos -->
+        <menuitem id="gestionpracticas_ciclos_menu" name="Ciclos Formativos" parent="gestionpracticas_menu_root" sequence="50" action="gestionpracticas_ciclos_formativos_action_window"/>
+    </data>
+</odoo>

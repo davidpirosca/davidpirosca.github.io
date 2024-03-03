@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Coordinadores de Ciclos Formativos -->
+        <record id="report_gestionpracticas_coordinadores_ciclos" model="ir.actions.report">
+            <field name="name">Informe de Coordinadores de Ciclos Formativos</field>
+            <field name="model">gestionpracticas.ciclos_formativos</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.coordinadores_ciclos_report</field>
+            <field name="report_file">gestionpracticas.coordinadores_ciclos_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_ciclos_formativos"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Coordinadores de Ciclos Formativos -->
+        <template id="gestionpracticas.coordinadores_ciclos_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Coordinadores de Ciclos Formativos</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px;">Foto</th>
+                                <th style="padding: 10px;">DNI</th>
+                                <th style="padding: 10px;">Nombre</th>
+                                <th style="padding: 10px;">Fecha de Nacimiento</th>
+                                <th style="padding: 10px;">Dirección</th>
+                                <th style="padding: 10px;">Teléfono</th>
+                                <th style="padding: 10px;">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="ciclo">
+                                <tr>
+                                    <td style="padding: 10px;">
+                                        <img t-if="ciclo.coordinador.foto" t-att-src="'data:image/png;base64,' + ciclo.coordinador.foto.decode('utf-8')" style="max-height: 50px; max-width: 50px; border-radius: 50%;"/>
+                                    </td>                                    
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.dni"/></td>
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.name"/></td>
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.fecha_nacimiento"/></td>
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.direccion"/></td>
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.telefono"/></td>
+                                    <td style="padding: 10px;"><span t-field="ciclo.coordinador.email"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

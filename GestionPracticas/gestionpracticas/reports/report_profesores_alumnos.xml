@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Alumnos de un Profesor -->
+        <record id="report_gestionpracticas_alumnos_profesor" model="ir.actions.report">
+            <field name="name">Informe de Alumnos del Profesor</field>
+            <field name="model">gestionpracticas.profesor</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.alumnos_profesor_report</field>
+            <field name="report_file">gestionpracticas.alumnos_profesor_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_profesor"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Alumnos de un Profesor -->
+        <template id="gestionpracticas.alumnos_profesor_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Alumnos del Profesor</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px;">Foto</th>
+                                <th style="padding: 10px;">DNI</th>
+                                <th style="padding: 10px;">Nombre</th>
+                                <th style="padding: 10px;">Fecha de Nacimiento</th>
+                                <th style="padding: 10px;">Dirección</th>
+                                <th style="padding: 10px;">Teléfono</th>
+                                <th style="padding: 10px;">Email</th>
+                                <th style="padding: 10px;">Ciclo Formativo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="profesor">
+                                <t t-foreach="profesor.id_alumnos" t-as="alumno">
+                                    <tr>
+                                        <td style="padding: 10px;"><img t-att-src="'data:image/png;base64,' + alumno.foto.decode('utf-8')" style="max-height: 50px; max-width: 50px; border-radius: 50%;"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.dni"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.name"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.fecha_nacimiento"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.direccion"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.telefono"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.email"/></td>
+                                        <td style="padding: 10px;"><span t-field="alumno.id_ciclo_formativo.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

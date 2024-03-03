@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de informe para Empresas -->
+        <record id="report_gestionpracticas_empresas" model="ir.actions.report">
+            <field name="name">Informe de Empresas</field>
+            <field name="model">gestionpracticas.empresa</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestionpracticas.empresas_report</field>
+            <field name="report_file">gestionpracticas.empresas_report</field>
+            <field name="binding_model_id" ref="model_gestionpracticas_empresa"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Plantilla del informe para Empresas -->
+        <template id="gestionpracticas.empresas_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 style="color: #3366cc;">Informe de Empresas</h2>
+                    <table class="table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="padding: 10px; text-align: center;">Nombre de la Empresa</th>
+                                <th style="padding: 10px; text-align: center;">Dirección</th>
+                                <th style="padding: 10px; text-align: center;">Correo Electrónico</th>
+                                <th style="padding: 10px; text-align: center;">Teléfono</th>
+                                <th style="padding: 10px; text-align: center;">Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="empresa">
+                                <tr>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="empresa.name"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="empresa.direccion"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="empresa.email"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="empresa.telefono"/></td>
+                                    <td style="padding: 10px; text-align: center;"><span t-field="empresa.responsable"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
